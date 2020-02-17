@@ -39,8 +39,7 @@ public class IssueRepositoryImplTest {
 
 	@Test
 	public void testInitializeIssuesFromFile() {
-		dao.initializeIssuesFromFile();
-		assertNotNull("This method should assign the list of issues read from the file to issues variable"
+		assertNotNull("constructor should assign the list of issues read from the file to issues variable"
 				+ " and should not be null", dao.getIssues());
 
 	}

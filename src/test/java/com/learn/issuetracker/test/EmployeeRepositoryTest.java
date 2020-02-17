@@ -3,7 +3,6 @@ package com.learn.issuetracker.test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,10 +29,8 @@ public class EmployeeRepositoryTest {
 
 	@Test
 	public void testinitializeEmployeesFromFile() {
-		EmployeeRepository.initializeEmployeesFromFile(Paths.get("src", "data", "employees.csv"));
-
 		List<Employee> emplList = EmployeeRepository.getEmployees();
-		assertNotNull("This method should assign the list of employees read from the file to employees variable"
+		assertNotNull("list of employees read from the file should be assigned to employees variable in static block"
 				+ " and should not be null", emplList);
 		assertFalse("The employees list should contain the data read from the file", emplList.isEmpty());
 	}
@@ -43,6 +40,6 @@ public class EmployeeRepositoryTest {
 		Optional<Employee> optEmployee = EmployeeRepository.getEmployee(101);
 		employee = optEmployee.orElse(null);
 		assertNotNull("Check whether the employee is present in the the employees List. "
-				+ "This should be should be populated with the file data and should not be null", employee);
+				+ "This should be populated with the file data and should not be null", employee);
 	}
 }
