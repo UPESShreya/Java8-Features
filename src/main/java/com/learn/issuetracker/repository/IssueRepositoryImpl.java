@@ -1,7 +1,12 @@
 package com.learn.issuetracker.repository;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+//import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.learn.issuetracker.model.Issue;
 
@@ -20,7 +25,6 @@ public class IssueRepositoryImpl implements IssueRepository {
 	 * issuesFilePath variable is used to store the path of issues.csv file
 	 */
 	private Path issuesFilePath;
-
 	/*
 	 * Initialize the member variables in the parameterized constructor
 	 * initializeIssuesFromFile() method should be used in the constructor to
@@ -28,7 +32,11 @@ public class IssueRepositoryImpl implements IssueRepository {
 	 *
 	 */
 	public IssueRepositoryImpl(Path issuesFilePath) {
-
+		super();
+		//this.issues = issues;		
+		this.issuesFilePath = issuesFilePath;
+		initializeIssuesFromFile();
+		
 	}
 
 	/*
@@ -40,9 +48,20 @@ public class IssueRepositoryImpl implements IssueRepository {
 	 * should not be stored in the "issues" List.
 	 */
 
-	public void initializeIssuesFromFile() {
+	
 
+	public void initializeIssuesFromFile() {
+		//List<Issue> issueList=null;
+		try(Stream<String> s=Files.newBufferedReader(this.issuesFilePath).lines()){
+			issues=s.map(Utility::parseIssue).filter(i->i.getIssueId().startsWith("IS")).collect(Collectors.toList());
+					
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		//return issueList;
 	}
+
+	
 
 	/*
 	 * Getter Method

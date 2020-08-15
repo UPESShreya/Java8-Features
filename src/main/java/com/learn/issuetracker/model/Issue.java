@@ -16,8 +16,11 @@ public class Issue {
 	private String status;
 	private Employee assignedTo;
 
+	
+
 	public Issue() {
-		//Default Constructor
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/*
@@ -25,12 +28,21 @@ public class Issue {
 	 */
 	public Issue(String issueId, String summary, LocalDate createdOn, LocalDate expectedResolutionOn, String priority,
 			String status, Employee assignedTo) {
-
+		super();
+		this.issueId = issueId;
+		this.summary = summary;
+		this.createdOn = createdOn;
+		this.expectedResolutionOn = expectedResolutionOn;
+		this.priority = priority;
+		this.status = status;
+		this.assignedTo = assignedTo;
 	}
 
 	public String getIssueId() {
 		return issueId;
 	}
+
+	
 
 	public void setIssueId(String issueId) {
 		this.issueId = issueId;
