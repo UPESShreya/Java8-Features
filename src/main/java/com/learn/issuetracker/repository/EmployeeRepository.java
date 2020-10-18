@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -70,12 +70,5 @@ public class EmployeeRepository {
 		return employees;
 	}
 	
-	public static void main(String args[])
-	{
-		Path employeesfilePath=Paths.get("src","data","employees.csv");
-		initializeEmployeesFromFile(employeesfilePath);
-		int empId=101;
-		getEmployee(empId);
-		getEmployees();
-	}
+	
 }
